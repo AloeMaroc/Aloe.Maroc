@@ -211,9 +211,9 @@
   display: flex;
   flex-direction: column; /* stack logo and links vertically */
   align-items: center;    /* center horizontally */
-  justify-content: center; /* center vertically as a group */
-  height: 100px;           /* adjust as needed for navbar height */
-    padding: 0;        /* let height adjust */
+  justify-content: center; /* center vertically as a group */           /* adjust as needed for navbar height */
+   padding: 10px 0;        /* reduce padding to bring them closer */
+    height: auto;        /* let height adjust */
 }
 
 .logo {
@@ -303,6 +303,7 @@
       color: white;
       margin-top: 3rem;
     }
+
 
 
 
