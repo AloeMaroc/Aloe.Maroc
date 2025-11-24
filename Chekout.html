@@ -232,25 +232,29 @@ nav {
 @media (max-width: 600px) {
   nav {
     display: flex;
-    justify-content: space-between; /* logo left, links right */
-    align-items: center;            /* vertical centering */
-    padding: 10px 20px;             /* adjust spacing as needed */
+    flex-direction: column;      /* stack logo and links */
+    align-items: center;         /* center horizontally */
+    justify-content: center;     /* center vertically in navbar */
+    padding: 20px 0;
     background-color: #6b0d0f;
+    gap: 15px;                   /* space between logo and links */
   }
 
   .logo {
     font-size: 28px;
     font-weight: 700;
     color: white;
+    text-align: center;
   }
 
-  .nav-right {
+  .nav-links {
     display: flex;
-    gap: 15px;                      /* space between produits and cart */
+    justify-content: center;     /* center produits + cart */
     align-items: center;
+    gap: 20px;                   /* space between links */
   }
 
-  .nav-link {
+  .nav-links a {
     text-decoration: none;
     font-size: 18px;
     color: white;
@@ -262,6 +266,7 @@ nav {
     filter: brightness(1000%) invert(100%);
   }
 }
+
 
 
   </style>
@@ -483,6 +488,7 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
 
 
