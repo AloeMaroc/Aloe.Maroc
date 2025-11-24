@@ -231,6 +231,7 @@ nav {
 
 /* MOBILE VERSION — logo on top, links under it centered */
 /* MOBILE VERSION — EXACT SAME AS YOUR HOMEPAGE */
+/* MOBILE VERSION — EXACT SAME AS YOUR HOMEPAGE */
 @media (max-width: 600px) {
   nav {
     display: flex;
@@ -249,10 +250,12 @@ nav {
     color: white;
   }
 
-  .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+  .nav-right {
+    display: flex;
+    justify-content: center;   /* center produits + cart */
+    align-items: center;
+    gap: 15px;                 /* spacing like homepage */
+  }
 
   .nav-link {
     text-decoration: none;
@@ -266,6 +269,7 @@ nav {
     filter: brightness(1000%) invert(100%); /* makes cart white like homepage */
   }
 }
+
 
   </style>
 </head>
@@ -486,6 +490,7 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
 
 
