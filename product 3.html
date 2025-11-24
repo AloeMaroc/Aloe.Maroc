@@ -486,7 +486,13 @@ addCartBtn.addEventListener('click', () => {
 function adjustProductInfoHeight() {
   const image = document.querySelector('.main-image');
   const info = document.querySelector('.product-info');
-  if (image && info) info.style.height = image.clientHeight + 'px';
+  if (!image || !info) return;
+
+  if (window.innerWidth > 768) { // only on desktop
+    info.style.height = image.clientHeight + 'px';
+  } else {
+    info.style.height = 'auto'; // reset on mobile
+  }
 }
 
 window.addEventListener('load', adjustProductInfoHeight);
@@ -548,6 +554,7 @@ lightbox.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
