@@ -200,6 +200,29 @@
   font-size: 16px;
   white-space: nowrap;
 }
+/* MOBILE NAVBAR FIX — same style as other pages */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+
+  .navbar .logo {
+    font-size: 20px;
+  }
+
+  .navbar .nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .navbar .nav-links a {
+    font-size: 16px;
+  }
+}
 
   </style>
 </head>
@@ -420,4 +443,5 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
