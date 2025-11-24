@@ -201,26 +201,38 @@
   white-space: nowrap;
 }
 /* MOBILE NAVBAR FIX — same style as other pages */
+/* MOBILE NAVBAR — logo on top, links under it, all centered */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 20px !important;
+    display: flex;
+    flex-direction: column;   /* stack logo + links */
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    gap: 6px;                  /* small space between logo & links */
   }
 
   .navbar .logo {
-    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    font-size: 22px;
+    margin: 0;
   }
 
-  .navbar .nav-links {
+  .nav-links {
     display: flex;
-    flex-direction: row;
-    gap: 15px;
+    flex-direction: row;       /* keep links horizontal */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
-  .navbar .nav-links a {
-    font-size: 16px;
+  .nav-links a {
+    text-align: center;
+    font-size: 17px;
   }
 }
 
@@ -443,5 +455,6 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
 
