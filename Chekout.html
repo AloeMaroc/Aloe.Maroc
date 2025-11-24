@@ -200,6 +200,28 @@
   font-size: 16px;
   white-space: nowrap;
 }
+@media (max-width: 600px) {
+  nav {
+    justify-content: center !important;
+    position: relative;
+  }
+
+  /* Center logo */
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Move cart + produits to the right */
+  .nav-right {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+}
 
   </style>
 </head>
@@ -207,7 +229,7 @@
 
   <!-- NAVBAR -->
    <header class="navbar">
-    <a href="index.html" class="logo">Aloe Maroc</a>
+    <a href="index.html" class="logo">Aloe Drip</a>
     <div class="nav-links">
       <a href="products.html">Produits</a>
       <a href="cart.html" class="cart-icon">
@@ -420,4 +442,5 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
