@@ -212,10 +212,8 @@
   flex-direction: column; /* stack logo and links vertically */
   align-items: center;    /* center horizontally */
   justify-content: center; /* center vertically as a group */
-  padding: 15px 0;
-  background-color: #6b0d0f;
-  gap: 15px;              /* space between logo and links */
-  height: auto;           /* let height adjust */
+  height: 100px;           /* adjust as needed for navbar height */
+    padding: 0;        /* let height adjust */
 }
 
 .logo {
@@ -224,14 +222,14 @@
   font-weight: bold;
 }
 
-.nav-links {
- margin-top: 10px;
+ .nav-links {
     display: flex;
-  justify-content: center;
-    aligne-content:center;
-  gap: 20px;
-    width:100%;
-}
+    gap: 20px;              /* space between links */
+    justify-content: center; /* center horizontally */
+    align-items: center;     /* center vertically */
+    width: 100%;
+    margin: 0;               /* remove extra margin that pushes them down */
+  }
 
   /* ================= Animations ================= */
   
@@ -305,6 +303,7 @@
       color: white;
       margin-top: 3rem;
     }
+
 
 
 
