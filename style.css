@@ -207,29 +207,29 @@
     }
 
   }
-  .navbar {
+ .navbar {
   display: flex;
-  flex-direction: column; /* stack logo and links vertically */
-  align-items: center;    /* center horizontally */
-  justify-content: center; /* center vertically as a group */           /* adjust as needed for navbar height */
-   padding: 10px 0;        /* reduce padding to bring them closer */
-    height: auto;        /* let height adjust */
+  flex-direction: column;  /* stack logo and links */
+  align-items: center;     /* center horizontally */
+  justify-content: center; /* center the group vertically */
+  padding: 5px 0;          /* minimal padding */
+  height: auto;            /* let navbar height adjust */
 }
 
 .logo {
-  position: static;       /* remove absolute positioning */
   font-size: 24px;
   font-weight: bold;
+  margin-bottom: 5px;      /* small gap to nav-links */
 }
 
- .nav-links {
-    display: flex;
-    gap: 20px;              /* space between links */
-    justify-content: center; /* center horizontally */
-    align-items: center;     /* center vertically */
-    width: 100%;
-    margin: 0;               /* remove extra margin that pushes them down */
-  }
+.nav-links {
+  display: flex;
+  gap: 20px;               /* spacing between product/cart */
+  justify-content: center;
+  align-items: center;
+  width: auto;             /* shrink to content */
+  margin: 0;               /* remove extra spacing */
+}
 
   /* ================= Animations ================= */
   
@@ -303,6 +303,7 @@
       color: white;
       margin-top: 3rem;
     }
+
 
 
 
