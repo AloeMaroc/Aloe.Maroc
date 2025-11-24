@@ -212,7 +212,7 @@
   flex-direction: column; /* stack logo and links vertically */
   align-items: center;    /* center horizontally */
   justify-content: center; /* center vertically as a group */
-  padding: 20px 0;
+  padding: 15px 0;
   background-color: #6b0d0f;
   gap: 15px;              /* space between logo and links */
   height: auto;           /* let height adjust */
@@ -228,8 +228,8 @@
  margin-top: 10px;
     display: flex;
   justify-content: center;
-  align-items: center;
   gap: 20px;
+    width:100%;
 }
 
   /* ================= Animations ================= */
@@ -304,4 +304,5 @@
       color: white;
       margin-top: 3rem;
     }
+
 
