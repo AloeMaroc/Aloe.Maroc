@@ -250,17 +250,12 @@ body {
   transform: scale(1.2);
 }
 @media (max-width: 768px) {
-    .product-container {
+  .product-container {
     flex-direction: column;  /* stack everything vertically */
+    gap: 20px;
+    padding: 10px;
+    margin: 1rem;
   }
-
-  .product-info {
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
-    height: auto !important; /* override any JS height */
-  }
-}
 
   .product-images {
     width: 100%;             /* full width for images */
@@ -289,6 +284,12 @@ body {
 
   .gallery {
     justify-content: flex-start;
+  }
+
+  .product-info {
+    width: 100%;            /* full width */
+    text-align: center;     /* center title, description, etc */
+    margin-top: 10px;
   }
 
   .selectors {
@@ -486,13 +487,7 @@ addCartBtn.addEventListener('click', () => {
 function adjustProductInfoHeight() {
   const image = document.querySelector('.main-image');
   const info = document.querySelector('.product-info');
-  if (!image || !info) return;
-
-  if (window.innerWidth > 768) { // only on desktop
-    info.style.height = image.clientHeight + 'px';
-  } else {
-    info.style.height = 'auto'; // reset on mobile
-  }
+  if (image && info) info.style.height = image.clientHeight + 'px';
 }
 
 window.addEventListener('load', adjustProductInfoHeight);
@@ -554,7 +549,4 @@ lightbox.addEventListener('click', () => {
 
 </body>
 </html>
-
-
-
 
