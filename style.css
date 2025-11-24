@@ -228,6 +228,7 @@
  margin-top: 10px;
     display: flex;
   justify-content: center;
+    aligne-content:center;
   gap: 20px;
     width:100%;
 }
@@ -304,5 +305,6 @@
       color: white;
       margin-top: 3rem;
     }
+
 
 
