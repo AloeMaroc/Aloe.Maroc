@@ -229,33 +229,29 @@ nav {
 }
 
 
-/* MOBILE VERSION — logo on top, links under it centered */
-/* MOBILE VERSION — EXACT SAME AS YOUR HOMEPAGE */
-/* MOBILE VERSION — EXACT SAME AS YOUR HOMEPAGE */
-/* MOBILE VERSION — EXACT SAME AS YOUR HOMEPAGE */
 @media (max-width: 600px) {
   nav {
     display: flex;
-    flex-direction: column;    /* stack logo then links */
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;      /* stack logo then links */
+    align-items: center;         /* horizontal centering */
+    justify-content: center;     /* vertical centering in navbar */
     padding: 20px 0;
-    background-color: #6b0d0f; /* same red background */
-    text-align: center;
-    gap: 10px;                 /* spacing between logo and links */
+    background-color: #6b0d0f;
+    gap: 10px;                   /* space between logo and links */
   }
 
   .logo {
-    font-size: 32px;           /* same style as home */
+    font-size: 32px;
     font-weight: 700;
     color: white;
+    text-align: center;           /* ensures text is centered */
   }
 
   .nav-right {
     display: flex;
-    justify-content: center;   /* center produits + cart */
+    justify-content: center;      /* center produits + cart */
     align-items: center;
-    gap: 15px;                 /* spacing like homepage */
+    gap: 15px;                    /* space between items */
   }
 
   .nav-link {
@@ -267,7 +263,7 @@ nav {
 
   .cart-icon {
     width: 28px;
-    filter: brightness(1000%) invert(100%); /* makes cart white like homepage */
+    filter: brightness(1000%) invert(100%);
   }
 }
 
@@ -491,6 +487,7 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
 
 
