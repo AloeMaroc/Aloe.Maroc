@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products - Aloe</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .promo-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #27ae60;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 50%;
+      font-size: 14px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    .product-card {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">Aloe Maroc</a>
+    <div class="nav-links">
+      <a href="products.html">Produits</a>
+      <a href="cart.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+    </div>
+  </header>
+
+  <section class="product-section">
+    <h2>Nos Produits</h2>
+    <div class="product-grid">
+
+      <div class="product-card" data-link="product 1.html" data-old-price="300">
+        <span class="promo-badge"></span>
+        <img src="images/1,1.jpeg" alt="Ensemble 1">
+        <h3>Ensemble Veste zippée + pantalon</h3>
+        <p class="price">260.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 2.html" data-old-price="370">
+        <span class="promo-badge"></span>
+        <img src="images/2.jpeg" alt="Ensemble 2">
+        <h3>Ensemble Class Milano</h3>
+        <p class="price">260.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 3.html" data-old-price="200">
+        <span class="promo-badge"></span>
+        <img src="images/3,0.jpeg" alt="Pull 1">
+        <h3>Pull Jackar</h3>
+        <p class="price">120.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 4.html" data-old-price="200">
+        <span class="promo-badge"></span>
+        <img src="images/4,0.jpeg" alt="Pull 2">
+        <h3>Pull Chahda</h3>
+        <p class="price">120.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 5.html" data-old-price="250">
+        <span class="promo-badge"></span>
+        <img src="images/5,0.jpg" alt="Ensemble 3">
+        <h3>Survete Nike</h3>
+        <p class="price">230.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 6.html" data-old-price="250">
+        <span class="promo-badge"></span>
+        <img src="images/6,0.jpeg" alt="Veste 1">
+        <h3>Veste Polaire</h3>
+        <p class="price">210.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 7.html" data-old-price="250">
+        <span class="promo-badge"></span>
+        <img src="images/7,0.jpg" alt="Sweatshirt 1">
+        <h3>Sweatshirt Polaire</h3>
+        <p class="price">210.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 8.html" data-old-price="270">
+        <span class="promo-badge"></span>
+        <img src="images/8,0.jpeg" alt="Survete 2">
+        <h3>Survete Adidas</h3>
+        <p class="price">255.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 9.html" data-old-price="290">
+        <span class="promo-badge"></span>
+        <img src="images/9,0.jpeg" alt="Survete 3">
+        <h3>Survete Femme</h3>
+        <p class="price">260.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 10.html" data-old-price="350">
+        <span class="promo-badge"></span>
+        <img src="images/10,0.jpeg" alt="Pyjama Femme 1">
+        <h3>Ensemble Pyjama Femme</h3>
+        <p class="price">230.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 11.html" data-old-price="220">
+        <span class="promo-badge"></span>
+        <img src="images/11,0.jpg" alt="Surete">
+        <h3>Surete nike </h3>
+        <p class="price">220.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 12.html" data-old-price="259">
+        <span class="promo-badge"></span>
+        <img src="images/12,0.png" alt="Robe">
+        <h3>Robe blanch plissée</h3>
+        <p class="price">199.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 13.html" data-old-price="280">
+        <span class="promo-badge"></span>
+        <img src="images/13,0.png" alt="Pyjama">
+        <h3>Jabador Jackar Femme</h3>
+        <p class="price">260.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 14.html" data-old-price="250">
+        <span class="promo-badge"></span>
+        <img src="images/14,0.jpeg" alt="Montre">
+        <h3>Montre Casio</h3>
+        <p class="price">200.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 15.html" data-old-price="300">
+        <span class="promo-badge"></span>
+        <img src="images/15,0.jpg" alt="Pack">
+        <h3>Ensemble Dan + les bottes</h3>
+        <p class="price">250.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 16.html" data-old-price="260">
+        <span class="promo-badge"></span>
+        <img src="images/16,0.jpg" alt="Pack">
+        <h3>Pack fleure </h3>
+        <p class="price">232.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 17.html" data-old-price="250">
+        <span class="promo-badge"></span>
+        <img src="images/17,0.jpg" alt="Pack">
+        <h3>Pack Gucci</h3>
+        <p class="price">230.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 18.html" data-old-price="260">
+        <span class="promo-badge"></span>
+        <img src="images/18,0.jpg" alt="Surete">
+        <h3>Survete Enfant</h3>
+        <p class="price">235.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 19.html" data-old-price="230">
+        <span class="promo-badge"></span>
+        <img src="images/19,0.jpg" alt="Pyjama Femme 1">
+        <h3>Pack Femme</h3>
+        <p class="price">195.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 20.html" data-old-price="300">
+        <span class="promo-badge"></span>
+        <img src="images/20,0.jpeg" alt="Pack">
+        <h3>Pack Homme</h3>
+        <p class="price">300.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 21.html" data-old-price="300">
+        <span class="promo-badge"></span>
+        <img src="images/21,0.jpeg" alt="Montre">
+        <h3>Montre Rolex</h3>
+        <p class="price">235.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 22.html" data-old-price="220">
+        <span class="promo-badge"></span>
+        <img src="images/22,0.PNG" alt="Pyjama Femme 1">
+        <h3>Ensemble Nike Tarza</h3>
+        <p class="price">220.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <div class="product-card" data-link="product 23.html" data-old-price="230">
+        <span class="promo-badge"></span>
+        <img src="images/23,0.jpg" alt="Montre">
+        <h3>Pack Al Fakhama</h3>
+        <p class="price">195.00 MAD</p>
+        <button>Ajouter au panier</button>
+      </div>
+
+      <!-- Add the rest of your 24 products similarly, using data-old-price where necessary -->
+    </div>
+  </section>
+
+  <script>
+  // Get cart from localStorage and update the cart count in the header
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById('cartCount').textContent = totalCount;
+  }
+
+  updateCartCount(); // run once on page load
+
+  // Add to cart & click functionality
+  const productCards = document.querySelectorAll('.product-card');
+  productCards.forEach(card => {
+    const button = card.querySelector('button');
+
+    button.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent card click redirect
+      const name = card.querySelector('h3').innerText.trim();
+      const price = Number(card.querySelector('.price').innerText.replace(' MAD','').trim());
+      const image = card.querySelector('img').src;
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingProduct = cart.find(item => item.name === name);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cart.push({ name, price, image, quantity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      updateCartCount(); // update cart count immediately
+      alert(`${name} added to cart!`);
+    });
+
+    // Make card clickable
+    card.addEventListener('click', () => {
+      const link = card.dataset.link;
+      if (link) window.location.href = link;
+    });
+  });
+
+  // Promo badge calculation
+  document.querySelectorAll('.product-card').forEach(card => {
+    const oldPrice = card.dataset.oldPrice ? parseFloat(card.dataset.oldPrice) : null;
+    const priceEl = card.querySelector('.price');
+    const currentPrice = parseFloat(priceEl.innerText.replace(' MAD',''));
+    const badge = card.querySelector('.promo-badge');
+
+    if(oldPrice && oldPrice > currentPrice){
+      const discount = Math.round(((oldPrice - currentPrice)/oldPrice)*100);
+      badge.textContent = `-${discount}%`;
+      badge.style.display = 'flex';
+    } else {
+      badge.style.display = 'none';
+    }
+  });
+</script>
+
+
+  <footer class="footer">
+    <p>&copy; 2025 Aloe Maroc. Tous droits réservés.</p>
+    <div class="footer-container">
+      <div class="social-icons">
+        <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="images/tiktok.png" alt="TikTok"></a>
+        <a href="#"><img src="images/whatsapp.png" alt="WhatsApp"></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

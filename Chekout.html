@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Aloe</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 30px;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      background: white;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .cart-icon {
+      width: 28px;
+      cursor: pointer;
+    }
+
+    .checkout-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 30px;
+    }
+
+    .checkout-form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .checkout-form h2 {
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .checkbox input {
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .cart-summary {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      height: fit-content;
+    }
+
+    .summary-item {
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .summary-total {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .confirm-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #a4161a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .confirm-btn button:hover {
+    background-color: #000000;
+    }
+    
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+    }
+
+    @media (max-width: 900px) {
+      .checkout-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .city-dropdown {
+  position: relative;
+}
+
+#city-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.city-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  display: none;
+  z-index: 500;
+}
+
+.city-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.city-item:hover {
+  background: #f0e5e5;
+}
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.summary-img {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.summary-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-title {
+  font-weight: bold;
+  font-size: 15px;
+  word-wrap: break-word;
+  white-space: normal;
+  line-height: 1.3;
+}
+
+.summary-qty {
+  color: #444;
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+.summary-price {
+  font-weight: bold;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+   <header class="navbar">
+    <a href="index.html" class="logo">Aloe Maroc</a>
+    <div class="nav-links">
+      <a href="products.html">Produits</a>
+      <a href="cart.html" class="cart-icon">
+  🛒 <span id="cartCount">0</span>
+</a>
+
+    </div>
+  </header>
+
+
+  <form id="checkoutForm" 
+      action="https://formsubmit.co/lbasi.maroc@gmail.com" 
+      method="POST">
+
+    <!-- Disable CAPTCHA -->
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- Redirect after submit -->
+    <input type="hidden" name="_next" value="thankyou.html">
+
+    <!-- CART DATA WILL BE INJECTED HERE -->
+    <input type="hidden" id="cartData" name="Order Details">
+
+    <div class="checkout-container">
+
+        <!-- LEFT SIDE — FORM -->
+        <div class="checkout-form">
+            <h2>Checkout Details</h2>
+
+            <div class="form-group">
+                <label>Nom et Prenom</label>
+                <input type="text" name="Full Name" id="fullName" placeholder="Mohamed" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="Email" id="email" placeholder="example@gmail.com" required>
+            </div>
+
+            <div class="form-group"> <label>Ville</label> <div class="city-dropdown"> 
+            <input type="text" id="city-input" placeholder="Search your city..." autocomplete="off" required> 
+            <div class="city-list" id="city-list"></div> 
+        </div> 
+        </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <input type="text" name="Address" id="address" placeholder="Street, Building, etc" required>
+            </div>
+
+            <div class="form-group">
+                <label>Numero de telephone</label>
+                <input type="text" name="Phone" id="phone" placeholder="06xxxxxxxx" required>
+            </div>
+
+            <div class="checkbox">
+                <input type="checkbox" id="agree" required>
+                <label for="agree">
+                    J'accepte les  
+                    <a href="T&C.html" target="_blank">Terms et Conditions</a>
+                </label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="marketing" name="Marketing Emails">
+                <label for="marketing">Je souhaite recevoir des e-mail marketing</label>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE — CART SUMMARY -->
+        <div class="cart-summary">
+            <h3>Votre demande</h3>
+            <div id="summary-items"></div>
+            <div id="summary-total" class="summary-total"></div>
+
+            <button type="submit" class="confirm-btn">
+                Confirmer la demande
+            </button>
+        </div>
+
+    </div>
+</form>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2025 Aloe Maroc. Tous droits réservés.</p>
+     <div class="footer-container">
+
+    <div class="social-icons">
+      <a href="https://www.instagram.com/aloe_drip?igsh=eDA0eXdzeGExMTUw&utm_source=qr" target="_blank">
+        <img src="images/instagram.png" alt="Instagram">
+      </a>
+
+      <a href="https://www.facebook.com/share/1E5JsETNU3/?mibextid=wwXIfr" target="_blank">
+        <img src="images/facebook.png" alt="Facebook">
+      </a>
+
+      <a href="https://www.tiktok.com/@lbasi.maroc?_r=1&_t=ZS-91b4u5CJlz8" target="_blank">
+        <img src="images/tiktok.png" alt="TikTok">
+      </a>
+
+      <a href="https://wa.me/212600000000" target="_blank">
+        <img src="images/whatsapp.png" alt="WhatsApp">
+      </a>
+    </div>
+  </div>
+  </footer>
+<script src="script.js"></script>
+<script>
+const cities = [
+  "Casablanca","Rabat","Tanger","Marrakech","Fès","Agadir","Salé","Meknès","Oujda",
+  "Kénitra","Tétouan","Temara","Safi","Mohammedia","Khouribga","Béni Mellal",
+  "El Jadida","Nador","Berrechid","Taza","Settat","Larache","Ksar El Kebir",
+  "Guelmim","Al Hoceima","Dakhla","Errachidia","Ouarzazate","Berkane","Taourirt",
+  "Fnideq","Martil","Chefchaouen","Azrou","Ifrane","Midelt","Taroudant","Tiflet",
+  "Youssoufia","Ouazzane","Jerada","Boujdour","Smara","Laâyoune","Tan-Tan",
+  "El Aioun","Sidi Slimane","Sidi Kacem","Sidi Bennour","Chichaoua","Essaouira",
+  "Khénifra","Tinghir","Zagora"
+];
+
+// City dropdown elements
+const cityInput = document.getElementById("city-input");
+const cityList = document.getElementById("city-list");
+
+// Show list on focus
+cityInput.addEventListener("focus", () => {
+  cityList.style.display = "block";
+  renderCities(cities);
+});
+
+// Filter cities on input
+cityInput.addEventListener("input", () => {
+  const value = cityInput.value.toLowerCase();
+  const filtered = cities.filter(c => c.toLowerCase().includes(value));
+  renderCities(filtered);
+});
+
+// Render city list
+function renderCities(list) {
+  cityList.innerHTML = "";
+  list.forEach(city => {
+    const div = document.createElement("div");
+    div.className = "city-item";
+    div.textContent = city;
+    div.onclick = () => {
+      cityInput.value = city;
+      cityList.style.display = "none";
+    };
+    cityList.appendChild(div);
+  });
+}
+
+// Close dropdown on outside click
+document.addEventListener("click", (e) => {
+  if (!cityInput.contains(e.target) && !cityList.contains(e.target)) {
+    cityList.style.display = "none";
+  }
+});
+
+// === LOAD CART SUMMARY WITH SIZE & COLOR ===
+function loadSummary() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let box = document.getElementById("summary-items");
+  let totalBox = document.getElementById("summary-total");
+
+  box.innerHTML = "";
+  let total = 0;
+  let cartText = "";
+
+  cart.forEach(item => {
+    let price = item.price * item.quantity;
+    total += price;
+
+    box.innerHTML += `
+      <div class="summary-item">
+        <img src="${item.image}" class="summary-img">
+        <div class="summary-info">
+          <span class="summary-title">${item.name}</span>
+          <span class="summary-qty">Quantité: ${item.quantity}</span>
+          <span class="summary-qty">Taille: ${item.size || '-'}</span>
+          <span class="summary-qty">Couleur: ${item.color || '-'}</span>
+        </div>
+        <span class="summary-price">${price} MAD</span>
+      </div>
+    `;
+
+    cartText += `${item.name} x${item.quantity} - Taille: ${item.size || '-'} - Couleur: ${item.color || '-'} - ${price} MAD\n`;
+  });
+
+  totalBox.innerHTML = `Total: ${total} MAD`;
+
+  // Send full cart text in the email
+  document.getElementById("cartData").value = cartText + `\nTOTAL: ${total} MAD`;
+}
+
+// Load summary on page load
+loadSummary();
+
+// === FORM SUBMISSION VALIDATION ===
+document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+  const agree = document.getElementById("agree");
+
+  if (!agree.checked) {
+    e.preventDefault();
+    alert("You must agree to the Terms & Conditions before completing your order.");
+  }
+});
+</script>
+
+
+</body>
+</html>

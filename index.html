@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aloe - Boutique en ligne</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f5f5dc;
+      margin: 0;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #5a1a1a;
+      padding: 1rem 2rem;
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+    }
+
+    .search-bar {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      flex-grow: 1;
+      margin: 0 1rem;
+      max-width: 300px;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .hero-banner {
+      background-image: url('images/banner1.png');
+      background-size: cover;
+      background-position: center;
+      padding: 6rem 1rem;
+      text-align: center;
+      color: white;
+      position: relative;
+       margin: 2rem auto;          /* space from edges */
+  max-width: 1200px;          /* optional, controls width */
+  border-radius: 20px;        /* curved corners */
+  overflow: hidden;
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .banner-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .banner-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .shop-button {
+      padding: 0.75rem 1.5rem;
+      background-color: black;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .featured-products-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-direction: row;
+    }
+
+    .featured-products {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .see-more-btn {
+      align-self: center;
+      white-space: nowrap;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #a4161a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .see-more-btn:hover {
+      background-color: #7c1212;
+    }
+
+    .product-card {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      text-align: center;
+      width: 250px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      animation: zoomIn 0.8s ease-out forwards;
+    }
+    .product-card:hover {
+    transform: scale(1.02);
+  }
+    .product-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    border-radius: 5px;
+    margin-bottom: 12px;
+  }
+
+    .product-card h3 {
+      margin: 0.5rem 0;
+    }
+
+    .product-card .price {
+      color: #a4161a;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-card button {
+      padding: 0.5rem 1rem;
+      background-color: #5a1a1a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .product-card button:hover {
+      background-color: #7c1212;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .product-card:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .product-card:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .product-card:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #5a1a1a;
+      color: white;
+      margin-top: 3rem;
+    }
+
+
+    @media (max-width: 768px) {
+      .featured-products-wrapper {
+        flex-direction: column;
+      }
+
+      .featured-products {
+        flex-direction: column;
+      }
+
+      .search-bar {
+        width: 100%;
+        margin: 1rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">Aloe Maroc</a>
+    <div class="nav-links">
+      <a href="products.html">Produits</a>
+      <a href="cart.html" class="cart-icon">
+  🛒 <span id="cartCount">0</span>
+</a>
+
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-banner">
+    <div class="banner-text">
+      <h1>Bienvenue chez Aloe Maroc !</h1>
+      <p>Gros offres. Grandes marques. Grandes économies.</p>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="product-section">
+  <h2 style="text-align: center; margin-bottom: 1.5rem;">Nos Produits</h2>
+
+  <div class="featured-products-wrapper">
+  <div class="product-card" data-link="product 1.html">
+  <img src="images/1,1.jpeg" alt="Ensemble 1">
+  <h3>Ensemble Veste zippée + pantalon</h3>
+  <p class="price">260.00 MAD</p>
+  <button>Ajouter au panier</button>
+</div>
+
+<div class="product-card" data-link="product 11.html">
+  <img src="images/12,0.png" alt="Robe 1">
+  <h3>Robe Plissée Blanche</h3>
+  <p class="price">199.00 MAD</p>
+  <button>Ajouter au panier</button>
+</div>
+
+<div class="product-card" data-link="product 23.html">
+  <img src="images/20,0.jpeg" alt="Pack 6">
+  <h3>Pack Homme</h3>
+  <p class="price">285.00 MAD</p>
+  <button>Ajouter au panier</button>
+</div>
+
+
+    <!-- See More Button -->
+    <a href="products.html" class="see-more-btn">Voir plus</a>
+  </div>
+</section>
+
+<!-- Make sure script.js is included at the end of body -->
+<script src="script.js"></script>
+  <script>
+// Select all product cards
+const productCards = document.querySelectorAll('.product-card');
+
+productCards.forEach(card => {
+  const button = card.querySelector('button');
+  
+  button.addEventListener('click', () => {
+    // Get product info
+    const name = card.querySelector('h3').innerText.trim();
+    const price = Number(card.querySelector('.price').innerText.replace(' MAD','').trim());
+    const image = card.querySelector('img').src;
+
+    // Load existing cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Check if product already exists → increase quantity
+    const existingProduct = cart.find(item => item.name === name);
+
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      // Add new product with quantity
+      cart.push({ 
+        name: name, 
+        price: price, 
+        image: image, 
+        quantity: 1
+      });
+    }
+
+    // Save cart back to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Optional notification
+    alert(`${name} ajouté au panier !`);
+    location.reload();
+  });
+});
+// Product card click → go to details page
+document.querySelectorAll('.product-card').forEach(card => {
+  card.addEventListener('click', (e) => {
+    if (e.target.tagName === "BUTTON") return; 
+
+    const link = card.dataset.link; // new attribute
+    if (link) window.location.href = link;
+  });
+});
+
+</script>
+  <footer class="footer">
+    <p>&copy; 2025 Aloe Maroc. Tous droits réservés.</p>
+     <div class="footer-container">
+
+    <div class="social-icons">
+      <a href="https://www.instagram.com/aloe_drip?igsh=eDA0eXdzeGExMTUw&utm_source=qr" target="_blank">
+        <img src="images/instagram.png" alt="Instagram">
+      </a>
+
+      <a href="https://www.facebook.com/share/1E5JsETNU3/?mibextid=wwXIfr" target="_blank">
+        <img src="images/facebook.png" alt="Facebook">
+      </a>
+
+      <a href="https://www.tiktok.com/@lbasi.maroc?_r=1&_t=ZS-91b4u5CJlz8" target="_blank">
+        <img src="images/tiktok.png" alt="TikTok">
+      </a>
+
+      <a href="https://wa.me/212600000000" target="_blank">
+        <img src="images/whatsapp.png" alt="WhatsApp">
+      </a>
+    </div>
+  </div>
+  </footer>
+</body>
+</html>

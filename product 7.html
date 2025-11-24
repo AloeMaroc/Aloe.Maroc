@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Page</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+body {
+  font-family: 'Georgia', serif;
+  background-color: #f5f5dc;
+  color: #2e2e2e;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #5a1a1a;
+  padding: 1rem 2rem;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Product container */
+.product-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  align-items: flex-start;
+}
+
+.product-images {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-image-container {
+  position: relative;
+  display: inline-block;
+  cursor: zoom-in;
+}
+
+.main-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+.main-image-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(90, 26, 26, 0.8);
+  color: white;
+  border: none;
+  font-size: 20px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.main-image-arrow.left { left: -20px; }
+.main-image-arrow.right { right: -20px; }
+
+.gallery-container {
+  overflow: hidden;
+  max-width: 400px;
+  margin-top: 10px;
+}
+
+.gallery {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.3s ease;
+}
+
+.gallery img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  flex-shrink: 0;
+}
+
+.gallery img.selected { border-color: #333; }
+
+.product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+}
+
+.product-title { font-size: 28px; margin: 0; }
+
+.product-description {
+  margin: 20px 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.selectors {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.add-cart {
+  padding: 10px 20px;
+  background: #a4161a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.product-actions { margin-top: auto; }
+
+.shipping-info {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  gap: 10px;
+}
+
+.shipping-info img { width: 24px; height: 24px; }
+
+.promo-badge {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: auto !important;
+  max-width: fit-content !important;
+  min-width: fit-content !important;
+  background: #27ae60;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  animation: sparkle 1.5s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0% { box-shadow: 0 0 5px rgba(0,255,0,0.3); }
+  50% { box-shadow: 0 0 12px rgba(0,255,0,0.6); }
+  100% { box-shadow: 0 0 5px rgba(0,255,0,0.3); }
+}
+
+.old-price {
+  text-decoration: line-through !important;
+  color: #888;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+/* Footer */
+.footer { text-align: center; padding: 1rem; background-color: #5a1a1a; color: white; margin-top: 3rem; }
+.footer-container { margin-top: 10px; }
+.social-icons img { width: 28px; margin: 0 10px; }
+
+/* Lightbox overlay */
+#lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  cursor: default;
+}
+
+#lightbox .lb-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 50px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+#lightbox .lb-arrow.left { left: 20px; }
+#lightbox .lb-arrow.right { right: 20px; }
+
+.color-selector {
+  display: flex;
+  flex-wrap: wrap; /* wrap to new row if too many */
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.color-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.color-circle.selected {
+  border-color: #000;
+  transform: scale(1.2);
+}
+
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <a href="index.html" class="logo">Aloe Maroc</a>
+  <div class="nav-links">
+    <a href="products.html">Products</a>
+    <a href="cart.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+  </div>
+</header>
+
+<div class="product-container">
+  <div class="product-images">
+    <div class="main-image-container">
+      <button class="main-image-arrow left">&#10094;</button>
+      <img src="images/7,0.jpg" class="main-image" id="mainImage">
+      <button class="main-image-arrow right">&#10095;</button>
+    </div>
+    <div class="gallery-container">
+      <div class="gallery" id="gallery">
+        <img src="images/7,0.jpg" class="selected">
+        <img src="images/7,1.jpg">
+        <img src="images/7,2.jpg">
+      </div>
+    </div>
+  </div>
+
+  <div class="product-info">
+    <h1 class="product-title">Sweatshirt Polaire</h1>
+    <p class="product-description">This is a short description of the product. Highlight key features and benefits.</p>
+    <span class="promo-badge"></span>
+
+<!-- Color selection -->
+<div class="color-selector" >
+  <div class="color-circle" data-color="red" style="background-color: rgb(238, 238, 182);"></div>
+  <div class="color-circle" data-color="blue" style="background-color: grey;"></div>
+  <div class="color-circle" data-color="black" style="background-color: black;"></div>
+
+  <!-- Add more as needed -->
+</div>
+
+    <div class="product-actions">
+      <div class="selectors">
+        <select>
+          <option value="">Choisie la taille</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+          <option>2XL</option>
+        </select>
+        <input type="number" min="1" max="10" value="1">
+        <span class="old-price" data-price="250.00">250.00 MAD</span>
+        <span class="product-price" data-price="210.00">210.00 MAD</span>
+      </div>
+      <button class="add-cart" data-product="Product Title" data-price="210.00">Ajouter au panier</button>
+      <div class="shipping-info">
+        <img src="images/truck.png" alt="Vehicle Icon">
+        Shipping: 1–3 jours | Payment à la livraison
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>&copy; 2025 Aloe Maroc. Tous droits réservés.</p>
+  <div class="footer-container">
+    <div class="social-icons">
+      <a href="https://www.instagram.com/aloe_drip" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
+      <a href="https://www.facebook.com" target="_blank"><img src="images/facebook.png" alt="Facebook"></a>
+      <a href="https://www.tiktok.com" target="_blank"><img src="images/tiktok.png" alt="TikTok"></a>
+      <a href="https://wa.me/212600000000" target="_blank"><img src="images/whatsapp.png" alt="WhatsApp"></a>
+    </div>
+  </div>
+</footer>
+
+<div id="lightbox">
+  <div class="lb-arrow left">&#10094;</div>
+  <img src="" alt="Enlarged Image">
+  <div class="lb-arrow right">&#10095;</div>
+</div>
+
+<script>
+/* === CART COUNT === */
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById('cartCount').textContent = totalCount;
+}
+
+updateCartCount(); // update cart count on page load
+
+/* === MAIN IMAGE + GALLERY === */
+const gallery = document.querySelector('.gallery');
+const galleryImgs = gallery.querySelectorAll('img');
+let mainIndex = 0;
+const visibleCount = 6;
+
+function updateMainImage() {
+  galleryImgs.forEach(i => i.classList.remove('selected'));
+  galleryImgs[mainIndex].classList.add('selected');
+  document.getElementById('mainImage').src = galleryImgs[mainIndex].src;
+
+  const imgWidth = galleryImgs[0].offsetWidth + 10;
+  let startIndex = Math.max(0, Math.min(mainIndex - Math.floor(visibleCount/2), galleryImgs.length - visibleCount));
+  gallery.style.transform = `translateX(-${startIndex * imgWidth}px)`;
+}
+
+galleryImgs.forEach((img, index) => {
+  img.addEventListener('click', () => { mainIndex = index; updateMainImage(); });
+});
+
+document.querySelector('.main-image-arrow.left').addEventListener('click', () => {
+  if(mainIndex > 0) { mainIndex--; updateMainImage(); }
+});
+
+document.querySelector('.main-image-arrow.right').addEventListener('click', () => {
+  if(mainIndex < galleryImgs.length -1) { mainIndex++; updateMainImage(); }
+});
+
+/* === ADD TO CART === */
+const addCartBtn = document.querySelector('.add-cart');
+let selectedColor = null; // make sure you already have your color selection logic somewhere
+
+const colorCircles = document.querySelectorAll('.color-circle');
+colorCircles.forEach(circle => {
+  circle.addEventListener('click', () => {
+    colorCircles.forEach(c => c.classList.remove('selected'));
+    circle.classList.add('selected');
+    selectedColor = circle.dataset.color;
+  });
+});
+
+addCartBtn.addEventListener('click', () => {
+  const productName = document.querySelector('.product-title').textContent;
+  const priceElement = document.querySelector('.product-price');
+  const price = parseFloat(priceElement.dataset.price);
+  const quantity = parseInt(document.querySelector('.selectors input[type="number"]').value) || 1;
+  const size = document.querySelector('.selectors select').value;
+
+  // Check for missing selections
+  let missing = [];
+  if (!size) missing.push("size");
+  if (!selectedColor) missing.push("color");
+
+  if (missing.length > 0) {
+    alert("Please select " + missing.join(" and ") + "!");
+    return;
+  }
+
+  const image = document.querySelector('.main-image').src;
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const existingProduct = cart.find(item => item.name === productName && item.size === size && item.color === selectedColor);
+
+  if (existingProduct) {
+    existingProduct.quantity += quantity;
+  } else {
+    cart.push({ name: productName, price, size, color: selectedColor, quantity, image });
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount(); // update cart count immediately
+  alert(`${quantity} x ${productName} (${size}, ${selectedColor}) added to cart!`);
+});
+
+
+/* === ADJUST PRODUCT INFO HEIGHT === */
+function adjustProductInfoHeight() {
+  const image = document.querySelector('.main-image');
+  const info = document.querySelector('.product-info');
+  if (image && info) info.style.height = image.clientHeight + 'px';
+}
+
+window.addEventListener('load', adjustProductInfoHeight);
+window.addEventListener('resize', adjustProductInfoHeight);
+
+/* === LIGHTBOX === */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = lightbox.querySelector('img');
+const mainImage = document.getElementById('mainImage');
+const lbLeft = lightbox.querySelector('.lb-arrow.left');
+const lbRight = lightbox.querySelector('.lb-arrow.right');
+
+mainImage.addEventListener('click', () => {
+  lightbox.style.display = 'flex';
+  lightboxImg.src = mainImage.src;
+});
+
+lbLeft.addEventListener('click', (e) => {
+  e.stopPropagation();
+  mainIndex = (mainIndex - 1 + galleryImgs.length) % galleryImgs.length;
+  lightboxImg.src = galleryImgs[mainIndex].src;
+  updateMainImage();
+});
+
+lbRight.addEventListener('click', (e) => {
+  e.stopPropagation();
+  mainIndex = (mainIndex + 1) % galleryImgs.length;
+  lightboxImg.src = galleryImgs[mainIndex].src;
+  updateMainImage();
+});
+
+lightbox.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
+
+/* === DYNAMIC PROMO BADGE === */
+(function(){
+  const oldPriceEl = document.querySelector('.old-price');
+  const newPriceEl = document.querySelector('.product-price');
+  const badge = document.querySelector('.promo-badge');
+
+  if(oldPriceEl && newPriceEl){
+    const oldPrice = parseFloat(oldPriceEl.dataset.price);
+    const newPrice = parseFloat(newPriceEl.dataset.price);
+
+    if(oldPrice > newPrice){
+      const discount = Math.round(((oldPrice - newPrice) / oldPrice) * 100);
+      badge.textContent = `-${discount}%`;
+      badge.style.display = 'flex';
+    } else {
+      badge.style.display = 'none';
+    }
+  } else {
+    badge.style.display = 'none';
+  }
+})();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aloe - Cart</title>
+   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* General */
+   html, body {
+  height: 100%;
+  margin: 0;
+}
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f5f5dc;
+      margin: 0;
+       display: flex;
+       flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #5a1a1a;
+      padding: 1rem 2rem;
+      color: white;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .search-bar {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      flex-grow: 1;
+      margin: 0 1rem;
+      max-width: 300px;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .cart-icon {
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* Cart Page */
+    .cart-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 2rem auto;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 1px solid #ddd;
+      padding: 1rem 0;
+      transition: transform 0.2s ease;
+    }
+
+    .cart-item:hover {
+      transform: scale(1.01);
+    }
+
+    .cart-item img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .cart-details {
+      flex: 1;
+    }
+
+    .cart-details h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .cart-details .price {
+      color: #a4161a;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .remove-btn {
+      background: #a4161a;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .remove-btn:hover {
+      background-color: #7c1212;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 2rem;
+      font-size: 1.3rem;
+      color: #444;
+    }
+
+    /* Featured products / cards (if you reuse them) */
+    .product-card {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      text-align: center;
+      width: 250px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      animation: zoomIn 0.8s ease-out forwards;
+    }
+
+    .product-card:hover {
+      transform: scale(1.02);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: contain;
+      border-radius: 5px;
+      margin-bottom: 12px;
+    }
+
+    .product-card h3 {
+      margin: 0.5rem 0;
+    }
+
+    .product-card .price {
+      color: #a4161a;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-card button {
+      padding: 0.5rem 1rem;
+      background-color: #5a1a1a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .product-card button:hover {
+      background-color: #7c1212;
+    }
+    .checkout button {
+    margin-top: auto;
+    padding: 8px 16px;
+    background-color: #a4161a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkout button:hover {
+    background-color: #000000;
+  }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1.2rem 0;
+      background-color: #5a1a1a;
+      color: white;
+      margin-top: 3rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .search-bar {
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    .main-content {
+  flex: 1; /* Takes remaining space pushing footer down */
+}
+
+  </style>
+</head>
+
+<body>
+ 
+
+  <!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="logo">Aloe Maroc</a>
+  <div class="nav-links">
+    <a href="products.html">Produits</a>
+  </div>
+</nav>
+
+<!-- CART -->
+<main class="main-content">
+  <div class="cart-container" id="cartItems"></div>
+</main>
+
+<div style="text-align:center; margin-top:20px;" class="checkout">
+<a href="Chekout.html"><button>Valider la command</button></a>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>&copy; 2025 Aloe Maroc. Tous droits réservés.</p>
+     <div class="footer-container">
+
+    <div class="social-icons">
+      <a href="https://www.instagram.com/aloe_drip?igsh=eDA0eXdzeGExMTUw&utm_source=qr" target="_blank">
+        <img src="images/instagram.png" alt="Instagram">
+      </a>
+
+      <a href="https://www.facebook.com/share/1E5JsETNU3/?mibextid=wwXIfr" target="_blank">
+        <img src="images/facebook.png" alt="Facebook">
+      </a>
+
+      <a href="https://www.tiktok.com/@lbasi.maroc?_r=1&_t=ZS-91b4u5CJlz8" target="_blank">
+        <img src="images/tiktok.png" alt="TikTok">
+      </a>
+
+      <a href="https://wa.me/212600000000" target="_blank">
+        <img src="images/whatsapp.png" alt="WhatsApp">
+      </a>
+    </div>
+  </div>
+  </footer>
+
+
+<script>
+function loadCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const container = document.getElementById("cartItems");
+
+  if (cart.length === 0) {
+    container.innerHTML = '<p class="empty">Your cart is empty 🛒</p>';
+    return;
+  }
+
+  container.innerHTML = cart.map((item, index) => `
+    <div class="cart-item">
+      <img src="${item.image}" alt="Product Image" />
+      <div class="cart-details">
+        <h3>${item.name}</h3>
+        <p>Size: ${item.size || '-'}</p>
+        <p>Color: ${item.color || '-'}</p>
+        <p class="price">${item.price} MAD</p>
+        <label>
+          Quantity: 
+          <input type="number" min="1" value="${item.quantity}" onchange="updateQuantity(${index}, this.value)" style="width:50px;" />
+        </label>
+        <p>Total: <span id="total-${index}">${(item.price * item.quantity).toFixed(2)}</span> MAD</p>
+      </div>
+      <button class="remove-btn" onclick="removeItem(${index})">X</button>
+    </div>
+  `).join("");
+}
+
+// Update quantity
+function updateQuantity(index, newQty) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  newQty = parseInt(newQty);
+  if(newQty < 1) newQty = 1;
+
+  cart[index].quantity = newQty;
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Update total for this item
+  document.getElementById(`total-${index}`).textContent = (cart[index].price * newQty).toFixed(2);
+  loadCart();
+}
+
+// Remove item
+function removeItem(index) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
+}
+
+// Load cart on page load
+loadCart();
+</script>
+
+
+
+</body>
+</html>
