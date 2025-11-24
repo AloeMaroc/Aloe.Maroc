@@ -232,31 +232,27 @@ nav {
 @media (max-width: 600px) {
   nav {
     display: flex;
-    flex-direction: column;      /* stack logo then links */
-    align-items: center;         /* horizontal centering */
-    justify-content: center;     /* vertical centering in navbar */
-    padding: 20px 0;
+    justify-content: space-between; /* logo left, links right */
+    align-items: center;            /* vertical centering */
+    padding: 10px 20px;             /* adjust spacing as needed */
     background-color: #6b0d0f;
-    gap: 10px;                   /* space between logo and links */
   }
 
   .logo {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     color: white;
-    text-align: center;           /* ensures text is centered */
   }
 
   .nav-right {
     display: flex;
-    justify-content: center;      /* center produits + cart */
+    gap: 15px;                      /* space between produits and cart */
     align-items: center;
-    gap: 15px;                    /* space between items */
   }
 
   .nav-link {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     font-weight: 500;
   }
@@ -487,6 +483,7 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
 
 
