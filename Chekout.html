@@ -210,13 +210,17 @@
     gap: 15px;                   /* space between logo and links */
   }
 
-  .logo {
-    font-size: 28px;
-    font-weight: 700;
-    color: white;
-    text-align: center;
-  }
+  .navbar {
+  position: relative;  /* parent must be relative */
+  height: 80px;        /* example navbar height */
+}
 
+.logo {
+  position: absolute;
+  top: 50%;            /* halfway down the navbar */
+  left: 50%;           /* halfway across the navbar */
+  transform: translate(-50%, -50%); /* shift back by 50% width & height */
+}
   .nav-links {
     display: flex;
     justify-content: center;     /* center produits + cart under logo */
@@ -455,4 +459,5 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
