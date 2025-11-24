@@ -250,12 +250,17 @@ body {
   transform: scale(1.2);
 }
 @media (max-width: 768px) {
-  .product-container {
+    .product-container {
     flex-direction: column;  /* stack everything vertically */
-    gap: 20px;
-    padding: 10px;
-    margin: 1rem;
   }
+
+  .product-info {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    height: auto !important; /* override any JS height */
+  }
+}
 
   .product-images {
     width: 100%;             /* full width for images */
@@ -284,12 +289,6 @@ body {
 
   .gallery {
     justify-content: flex-start;
-  }
-
-  .product-info {
-    width: 100%;            /* full width */
-    text-align: center;     /* center title, description, etc */
-    margin-top: 10px;
   }
 
   .selectors {
@@ -549,5 +548,6 @@ lightbox.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
