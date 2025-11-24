@@ -249,8 +249,9 @@
 </main>
 
 <div style="text-align:center; margin-top:20px;" class="checkout">
-<a href="Chekout.html"><button>Valider la command</button></a>
+  <button id="checkoutBtn">Valider la command</button>
 </div>
+
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -331,10 +332,23 @@ function removeItem(index) {
 
 // Load cart on page load
 loadCart();
+  // Prevent checkout if cart is empty
+document.getElementById("checkoutBtn").addEventListener("click", function () {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  if (cart.length === 0) {
+    alert("Votre panier est vide !");
+    return; // ❌ Stop navigation
+  }
+
+  // ✅ Go to checkout
+  window.location.href = "Chekout.html";
+});
 </script>
 
 
 
 </body>
 </html>
+
 
