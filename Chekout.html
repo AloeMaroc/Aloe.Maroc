@@ -200,74 +200,6 @@
   font-size: 16px;
   white-space: nowrap;
 }
-/* Desktop (normal) */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: white;
-  border-bottom: 1px solid #ddd;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.nav-link {
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  font-weight: 500;
-}
-
-.cart-icon {
-  width: 28px;
-  cursor: pointer;
-}
-
-
-@media (max-width: 600px) {
-  nav {
-    display: flex;
-    flex-direction: column;      /* stack logo and links */
-    align-items: center;         /* center horizontally */
-    justify-content: center;     /* center vertically in navbar */
-    padding: 20px 0;
-    background-color: #6b0d0f;
-    gap: 15px;                   /* space between logo and links */
-  }
-
-  .logo {
-    font-size: 28px;
-    font-weight: 700;
-    color: white;
-    text-align: center;
-  }
-
-  .nav-links {
-    display: flex;
-    justify-content: center;     /* center produits + cart */
-    align-items: center;
-    gap: 20px;                   /* space between links */
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
-    font-weight: 500;
-  }
-
-  .cart-icon {
-    width: 28px;
-     filter: brightness(0) invert(1);
-  }
-}
-
-
 
   </style>
 </head>
@@ -275,7 +207,7 @@ nav {
 
   <!-- NAVBAR -->
    <header class="navbar">
-    <a href="index.html" class="logo">Aloe Drip</a>
+    <a href="index.html" class="logo">Aloe Maroc</a>
     <div class="nav-links">
       <a href="products.html">Produits</a>
       <a href="cart.html" class="cart-icon">
@@ -366,19 +298,19 @@ nav {
 
     <div class="social-icons">
       <a href="https://www.instagram.com/aloe_drip?igsh=eDA0eXdzeGExMTUw&utm_source=qr" target="_blank">
-        <img src="instagram.png" alt="Instagram">
+        <img src="images/instagram.png" alt="Instagram">
       </a>
 
       <a href="https://www.facebook.com/share/1E5JsETNU3/?mibextid=wwXIfr" target="_blank">
-        <img src="facebook.png" alt="Facebook">
+        <img src="images/facebook.png" alt="Facebook">
       </a>
 
       <a href="https://www.tiktok.com/@lbasi.maroc?_r=1&_t=ZS-91b4u5CJlz8" target="_blank">
-        <img src="tiktok.png" alt="TikTok">
+        <img src="images/tiktok.png" alt="TikTok">
       </a>
 
       <a href="https://wa.me/212600000000" target="_blank">
-        <img src="whatsapp.png" alt="WhatsApp">
+        <img src="images/whatsapp.png" alt="WhatsApp">
       </a>
     </div>
   </div>
@@ -488,18 +420,3 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
