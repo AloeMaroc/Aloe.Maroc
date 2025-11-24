@@ -249,12 +249,10 @@ nav {
     color: white;
   }
 
-  .nav-right {
-    display: flex;
-    justify-content: center;   /* center produits + cart */
-    align-items: center;
-    gap: 15px;                 /* spacing like homepage */
-  }
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
   .nav-link {
     text-decoration: none;
@@ -488,6 +486,7 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
 
 
