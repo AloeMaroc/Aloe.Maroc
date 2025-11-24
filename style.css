@@ -192,8 +192,7 @@ select {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 100%;
-  min-height: 370px;
+  height: 380px; /* Fixed height for all cards */
 }
 
 .product-card:hover {
@@ -219,8 +218,9 @@ select {
   color: #a4161a;
 }
 
-.product-card button {
-  margin-top: auto;
+/* Spacer for missing button to align cards */
+.product-card .spacer {
+  flex-grow: 1;
 }
 
 /* ================= Cart Summary ================= */
