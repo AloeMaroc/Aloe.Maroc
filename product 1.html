@@ -249,6 +249,57 @@ body {
   border-color: #000;
   transform: scale(1.2);
 }
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .product-container {
+    flex-direction: column; /* stack images and info */
+    gap: 20px;
+    padding: 10px;
+    margin: 1rem;
+  }
+
+  .product-images {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .main-image {
+    max-width: 100%;
+  }
+
+  .gallery-container {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .gallery {
+    justify-content: flex-start;
+  }
+
+  .product-info {
+    width: 100%;
+    text-align: center; /* center title, description, buttons */
+  }
+
+  .selectors {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .add-cart {
+    width: 100%;
+  }
+
+  .shipping-info {
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .color-selector {
+    justify-content: center;
+  }
+}
 
 </style>
 </head>
@@ -484,4 +535,5 @@ lightbox.addEventListener('click', () => {
 
 </body>
 </html>
+
 
