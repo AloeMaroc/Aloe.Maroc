@@ -230,25 +230,41 @@ nav {
 
 
 /* MOBILE VERSION — logo on top, links under it centered */
- @media (max-width: 600px) {
-    .product-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .search-bar {
-      width: 100%;
-      margin-top: 10px;
-    }
-  
-    .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .nav-links {
-      margin-top: 10px;
-    }
+@media (max-width: 600px) {
+
+  nav {
+    display: flex;
+    flex-direction: column;      /* logo on top, links under it */
+    justify-content: center;     /* center vertically */
+    align-items: center;         /* center horizontally */
+    text-align: center;          /* center text */
+    padding: 20px 0;
+    gap: 12px;                   /* space between logo and links */
   }
+
+  .logo {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;                 /* makes it perfectly center */
+  }
+
+  .nav-right {
+    display: flex;
+    justify-content: center;     /* CENTER the row */
+    align-items: center;
+    gap: 20px;                   /* space between Produits + cart */
+    width: 100%;                 /* ensures perfect centering */
+  }
+
+  .nav-link {
+    font-size: 17px;
+  }
+
+  .cart-icon {
+    width: 30px;
+  }
+}
 
   </style>
 </head>
@@ -469,6 +485,7 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
 
 
