@@ -45,7 +45,7 @@
     }
 
     .hero-banner {
-      background-image: url('images/banner1.png');
+      background-image: url('banner1.png');
       background-size: cover;
       background-position: center;
       padding: 6rem 1rem;
@@ -312,13 +312,7 @@ document.querySelectorAll('.product-card').forEach(card => {
     if (link) window.location.href = link;
   });
 });
-// Product card click → go to details page
-document.querySelectorAll('.product-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const link = card.dataset.link;
-    if (link) window.location.href = link;
-  });
-});
+
 </script>
   <footer class="footer">
     <p>&copy; 2025 Aloe Drip. Tous droits réservés.</p>
@@ -345,3 +339,4 @@ document.querySelectorAll('.product-card').forEach(card => {
   </footer>
 </body>
 </html>
+
