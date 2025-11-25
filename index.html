@@ -264,61 +264,39 @@
 <!-- Make sure script.js is included at the end of body -->
 <script src="script.js"></script>
   <script>
-// Select all product cards
-const productCards = document.querySelectorAll('.product-card');
-
-productCards.forEach(card => {
-  const button = card.querySelector('button');
-  
-  button.addEventListener('click', () => {
-    // Get product info
-    const name = card.querySelector('h3').innerText.trim();
-    const price = Number(card.querySelector('.price').innerText.replace(' MAD','').trim());
-    const image = card.querySelector('img').src;
-
-    // Load existing cart from localStorage
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // Check if product already exists → increase quantity
-    const existingProduct = cart.find(item => item.name === name);
-
-    if (existingProduct) {
-      existingProduct.quantity += 1;
-    } else {
-      // Add new product with quantity
-      cart.push({ 
-        name: name, 
-        price: price, 
-        image: image, 
-        quantity: 1
-      });
+  <script>
+    /* Cart count stays */
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cartCount').textContent = totalCount;
     }
+    updateCartCount();
 
-    // Save cart back to localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
+    /* Product click → go to product page */
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const link = card.dataset.link;
+        if (link) window.location.href = link;
+      });
+    });
 
-    // Optional notification
-    alert(`${name} ajouté au panier !`);
-    location.reload();
-  });
-});
-// Product card click → go to details page
-document.querySelectorAll('.product-card').forEach(card => {
-  card.addEventListener('click', (e) => {
-    if (e.target.tagName === "BUTTON") return; 
+    /* Discount badge logic */
+    document.querySelectorAll('.product-card').forEach(card => {
+      const oldPrice = card.dataset.oldPrice ? parseFloat(card.dataset.oldPrice) : null;
+      const priceEl = card.querySelector('.price');
+      const currentPrice = parseFloat(priceEl.innerText.replace(' MAD',''));
+      const badge = card.querySelector('.promo-badge');
 
-    const link = card.dataset.link; // new attribute
-    if (link) window.location.href = link;
-  });
-});
-// Product card click → go to details page
-document.querySelectorAll('.product-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const link = card.dataset.link;
-    if (link) window.location.href = link;
-  });
-});
-</script>
+      if(oldPrice && oldPrice > currentPrice){
+        const discount = Math.round(((oldPrice - currentPrice)/oldPrice)*100);
+        badge.textContent = `-${discount}%`;
+        badge.style.display = 'flex';
+      } else {
+        badge.style.display = 'none';
+      }
+    });
+  
   <footer class="footer">
     <p>&copy; 2025 Aloe Drip. Tous droits réservés.</p>
      <div class="footer-container">
@@ -344,6 +322,7 @@ document.querySelectorAll('.product-card').forEach(card => {
   </footer>
 </body>
 </html>
+
 
 
 
