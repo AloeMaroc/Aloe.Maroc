@@ -311,7 +311,13 @@ document.querySelectorAll('.product-card').forEach(card => {
     if (link) window.location.href = link;
   });
 });
-
+// Product card click → go to details page
+document.querySelectorAll('.product-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const link = card.dataset.link;
+    if (link) window.location.href = link;
+  });
+});
 </script>
   <footer class="footer">
     <p>&copy; 2025 Aloe Drip. Tous droits réservés.</p>
@@ -338,5 +344,6 @@ document.querySelectorAll('.product-card').forEach(card => {
   </footer>
 </body>
 </html>
+
 
 
